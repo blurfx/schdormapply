@@ -1,0 +1,70 @@
+html, body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+}
+
+button[type="submit"], button#takeback{
+	margin-top: 30px;
+}
+
+.swrapper
+{
+	max-width: 	330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.wrapper {
+	max-width: 430px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+textarea.form-control[readonly], input.form-control[readonly] {
+	background-color: #ffffff;
+}
+span .label {
+    font-size: 80%;
+}
+
+div.input-group,input {
+	margin-bottom: -1px;
+}
+
+.form-apply input[name="date"] {
+	cursor: default;
+	background-color: #ffffff;
+}
+
+.wrapper input {
+	text-align: center;
+}
+
+.cbxWrapper {
+	float: right;
+	font-size: 14px;
+	height: 34px;
+}
+
+.ac {
+	margin: auto;
+	display: table;
+	color: #999;
+}
+
+.logout {
+	float:right;
+}
+
+.nav {
+	margin-bottom: 10px;
+}
+
+footer {
+    bottom: 7%;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+}

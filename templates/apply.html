@@ -1,0 +1,92 @@
+{% extends 'common.html' %}
+{% block content %}
+
+{% block head %}
+	<script src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap-datepicker.kr.js') }}" charset="UTF-8"></script>
+	<link href="{{ url_for('static', filename='css/datepicker.css') }}" rel="stylesheet">
+{% endblock %}
+
+    <form id="form-login" class="wrapper" action="/submit" method="POST">
+{% if error %}
+    <div class="alert alert-danger alert-dismissible fade in" data-dismiss="alert" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      외박계 작성에 실패했습니다! <br/>이미 오늘 날짜에 작성한건 아닌가요?
+    </div>
+{% endif %}
+	<a href='{{ url_for('logout') }}' class='logout'>로그아웃</a>
+	<ul class="nav nav-pills">
+		<li><a href="{{ url_for('list') }}">목록</a></li>
+		<li class="active"><a href="#">신청</a></li>
+	</ul>
+    <div class="input-group" >
+    	<div class="input-group-addon">외박 날짜</div>
+		<input id="datepicker" type="button" class="form-control">
+		<input name="date" type="hidden" required>
+	</div>
+	
+	<div class="input-group">
+		<div class="input-group-addon">외박 사유</div>
+	    <select name="resn" class="form-control" required>
+	    	<option value>외박 사유를 선택하세요</option>
+	    	<option value='1'>귀가</option>
+	    	<option value='2'>과제</option>
+	    	<option value='3'>MT</option>
+	    	<option value='4'>졸업여행</option>
+	    	<option value='5'>졸업작품 준비</option>
+	    	<option value='6'>기타</option>
+	    </select>
+    </div>
+
+	<div class="input-group">
+		<div class="input-group-addon">행선지</div>
+	    <input name="dest" type="text" class="form-control" placeholder="예) 북한" maxlength="8" required>
+    </div>
+
+    <div class="input-group">
+    	<div class="input-group-addon">비상 연락처</div>
+	    <input name="emer" type="text" pattern="[0-9]*" class="form-control" placeholder="비상 연락처" maxlength="11" value="{{ contact }}"  required>
+	</div>
+	<textarea name="cmnt" class="form-control" placeholder="비고"></textarea>
+
+	<button class="btn btn-lg btn-primary btn-block" type="submit">등록</button>
+</form>
+
+
+<script>
+
+var startDay = new Date();
+var endOfDay = new Date();
+var aviliDay = new Date();
+
+endOfDay.setDate(startDay.getDate() + 7);
+
+if(startDay.getDay() == 6)
+{
+	aviliDay.setDate(startDay.getDate() + 2);
+}
+else if(startDay.getDay() == 0)
+{
+	aviliDay.setDate(startDay.getDate() + 1);
+}
+
+$('#datepicker').datepicker({
+    format: "yyyy-mm-dd",
+    weekStart: 1,
+    daysOfWeekDisabled: "0,6",
+    autoclose: true,
+    todayHighlight: true,
+    language: 'kr',
+    startDate: startDay,
+    endDate: endOfDay,
+
+}).datepicker('setDate', aviliDay).datepicker('update');
+
+$(document).on("keyup", "input[name=emer]", function() {$(this).val( $(this).val().replace(/[^0-9]/gi,"") );});
+
+$($('input[name=date]')[0]).val($('#datepicker').val());
+
+$('#datepicker').change(function() { $($('input[name=date]')[0]).val($(this).val()); });
+
+</script>
+{% endblock %}

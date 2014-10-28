@@ -1,0 +1,20 @@
+a, a:visited, body {
+    background-color: #2ecc71;
+    font-family: "Montserrat";
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+}
+
+span.panic {
+	font-size: 7em;
+}
+
+span.msg {
+	font-size: 2.6em;
+}
+
+a {
+	font-size: 1.6em;
+	font-weight: bold;
+}

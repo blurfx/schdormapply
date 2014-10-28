@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
+    {% block head %}{% endblock %}
+    <title>SCH 모바일 외박계</title>
+</head>
+<body>
+    {% block content %}{% endblock %}
+    {% block footer %}
+<footer>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sch.mystika.me -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:100px"
+     data-ad-client="ca-pub-0025598220787361"
+     data-ad-slot="8546033167"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</footer>{% endblock %}
+</body>
+</html>

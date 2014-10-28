@@ -1,0 +1,77 @@
+{% extends 'common.html' %}
+
+{% block content %}
+	<div class="wrapper">
+		<a href='{{ url_for('logout') }}' class='logout'>로그아웃</a>
+		<ul class="nav nav-pills">
+			<li class="active"><a href="#">목록</a></li>
+			<li><a href="{{ url_for('apply') }}">신청</a></li>
+		</ul>
+		<small class="ac">어제부터 내일까지의 외박 신청만 표시됩니다.</small>
+		<div class="panel panel-default">
+		    <table class="table">
+				<thead>
+		        	<tr>
+			            <th>#</th>
+			            <th>행선지</th>
+			            <th>외박 사유</th>
+			            <th>날짜</th>
+			            <th></th>
+		        	</tr>
+		        </thead>
+		        <tbody>
+                {% for i in range(0,list|length) %}
+                  	<tr>
+			            <td>{{  i + 1 }}</td>
+			            <td>{{ list[i]['DEST'] }}</td>
+			            <td>{{ list[i]['SLEEP_OUT_RSN_EDIT'] }}</td>
+			            <td>{{ list[i]['SLEEP_OUT_DT_EDIT'] }}</td>
+			            <td><a onclick="show({{ i + 1 }})">삭제</a></td>
+		        	</tr>
+                {% endfor %}
+		        </tbody>
+		    </table>
+		    {% if list|length == 0 %}
+            <span class="ac">작성한 외박계가 없습니다.</span>
+            {% endif %}
+  		</div>
+	</div>
+
+	<div class="modal fade" id="delModal">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        <h4 class="modal-title">선택한 외박 신청을 취소 할까요?</h4>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">아니오</button>
+	        <button type="button" class="btn btn-primary" onclick="del()">네</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<form id="delForm" style="display:hidden" action="/delete" method="POST">
+		<input type="hidden" name="index" id="index" />
+	</form>
+<script>
+var sel = -1;
+
+$('#delModal').on('hidden.bs.modal', function () {
+	sel = -1;
+})
+
+function show(num)
+{
+	sel = num;
+	$('#delModal').modal('show');
+}
+
+function del()
+{
+	$('#index').val(sel);
+	document.getElementById('delForm').submit();
+}
+</script>
+{% endblock %}

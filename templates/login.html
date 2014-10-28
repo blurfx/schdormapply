@@ -1,0 +1,28 @@
+{% extends "common.html" %}
+
+{% block content %}
+<form id="form-login" class="swrapper" action="/login" method="POST">
+{% if error %}
+    <div class="alert alert-danger alert-dismissible fade in" data-dismiss="alert" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      {% if error == 1 %}
+      비밀번호를 다시 확인해 주세요.
+      {% elif error == 2 %}
+      존재하지 않는 학번입니다.
+      {% else %}
+      기숙사에 사는 거 맞아요?
+      {% endif %}
+    </div>
+{% endif %}
+	<h2>모바일 외박계</h2>
+    <input name="id" id="id" type="text" class="form-control" placeholder="학번" maxlength="8" value="{{ (uid or '') }}" required autofocus>
+    <input name="pw" id="pw" type="password" class="form-control" placeholder="비밀번호" required>
+    <div class="cbxWrapper" style="float: right;"><input type="checkbox" name="storeId" {% if uid %}checked{% endif %} >학번 저장</div>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+</form>
+<script>
+$(document).on("keyup", "input[name=id]", function() {$(this).val( $(this).val().replace(/[^0-9]/gi,"") );});
+</script>
+
+{% endblock %}
+{% block footer %}<footer>made by <a href="http://mystika.me">Mystika</a></footer>{% endblock %}

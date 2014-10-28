@@ -1,0 +1,30 @@
+.datepicker table tr td.today, .datepicker table tr td.today:hover, .datepicker table tr td.today.disabled, .datepicker table tr td.today.disabled:hover{
+	color: #000000;
+	background-color: #ffdb99;
+	border-color: #ffb733;
+}
+
+.datepicker table tr td.old, .datepicker table tr td.disabled, .datepicker table tr td.disabled:hover{
+	color: #cccccc;
+}
+
+.datepicker table tr td.day:hover, .datepicker table tr td.day.focused, .datepicker .prev:hover, .datepicker .next:hover{
+	background: #dedede;
+	cursor: pointer;
+}
+
+.datepicker table tr td.disabled:hover {
+	cursor: default;
+}
+
+.datepicker table tr td, .datepicker table tr th {
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 4px;
+	border: none;
+}
+
+.datepicker table tr td.active {
+	background-color: #79AAE7;
+}

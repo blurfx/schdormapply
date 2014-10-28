@@ -1,0 +1,29 @@
+{% extends 'common.html' %}
+
+{% block content %}
+<div class="wrapper">
+	<h2>✓ 작성 완료</h2>
+	<div class="input-group" >
+		<div class="input-group-addon">외박 날짜</div>
+		<input name="date" class="form-control" type="text" value="{{ data['date'] }}" readonly>
+	</div>
+
+	<div class="input-group">
+		<div class="input-group-addon">외박 사유</div>
+	    <input name="resn" class="form-control" type="text" value="{{ reasonStr }}" readonly>
+	</div>
+
+	<div class="input-group">
+		<div class="input-group-addon">행선지</div>
+	    <input name="dest" class="form-control" type="text" value="{{ data['dest'] }}" readonly>
+	</div>
+
+	<div class="input-group">
+		<div class="input-group-addon">비상 연락처</div>
+	    <input name="emer" class="form-control" type="text" value="{{ data['emer'] }}" readonly>
+	</div>
+	<textarea name="cmnt" class="form-control" readonly>{{ data['cmnt'] }}</textarea>
+
+    <button id="takeback" class="btn btn-lg btn-success btn-block" onclick="location.href='{{ url_for('index') }}'">완료</button>
+</div>
+{% endblock %}

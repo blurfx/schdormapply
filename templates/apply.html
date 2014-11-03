@@ -1,12 +1,10 @@
 {% extends 'common.html' %}
-{% block content %}
-
 {% block head %}
 	<script src="{{ url_for('static', filename='js/bootstrap-datepicker.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/bootstrap-datepicker.kr.js') }}" charset="UTF-8"></script>
 	<link href="{{ url_for('static', filename='css/datepicker.css') }}" rel="stylesheet">
 {% endblock %}
-
+{% block content %}
     <form id="form-login" class="wrapper" action="/submit" method="POST">
 {% if error %}
     <div class="alert alert-danger alert-dismissible fade in" data-dismiss="alert" role="alert">

@@ -1,11 +1,11 @@
 {% extends "common.html" %}
 
 {% block content %}
-    <div style="display: table;margin:0 auto;">
-    <img src="{{ url_for('static', filename='img/aww.jpg') }}" />
-    <img src="{{ url_for('static', filename='img/fu.png') }}" width="300px" />
+    <div style="display: table;margin:0 auto;width:100%">
+    <img src="{{ url_for('static', filename='img/aww.jpg') }}" style="width:50%;" />
+    <img src="{{ url_for('static', filename='img/fu.png') }}" style="width:50%;" />
         <br />
-    <span class="ac" style="color:#000;">학교가 (이제서야) 직접 모바일 외박계를 만들었네요. 망했습니다. 감사합니다.</span>
+    <span class="ac" style="color:#000;font-size: 12px;">학교가 (이제서야) 직접 모바일 외박계를 만들었네요.<br/>망했습니다. 감사합니다.</span>
     </div>
 
 {% endblock %}
